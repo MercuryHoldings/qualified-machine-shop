@@ -131,7 +131,14 @@ p { margin-bottom: 1rem; color: var(--text-light); }
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-/* Solid header styling removed - all pages now use transparent header with scroll transition */
+/* Solid header for non-homepage pages */
+.header.solid-header {
+  background-color: var(--primary-blue);
+}
+
+.header.solid-header .header-top {
+  background-color: var(--primary-blue);
+}
 
 .header-top {
   background-color: var(--primary-blue);

@@ -92,6 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isHomePage) {
         // Add home-page class to body
         body.classList.add('home-page');
+    } else {
+        // Add solid-header class for non-homepage pages
+        header.classList.add('solid-header');
     }
     
     // Add scroll event listener for transparent-to-opaque effect on ALL pages
