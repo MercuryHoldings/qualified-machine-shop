@@ -14,7 +14,7 @@
     <header class="header">
         <div class="header-top">
             <div class="container">
-                <div>📞 <span class="phone-number">(858) 259-9286</span> | ✉️ <span class="email-address">info@QualifiedMachine.com</span></div>
+                <div>📞 <button class="reveal-phone">Click to reveal phone</button> | ✉️ <button class="reveal-email">Click to reveal email</button></div>
                 <div>Your San Diego Machine Shop Since 1980</div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                 <div class="form-container wide-form">
                     <div class="section-title">
                         <h2>Request Your Quote</h2>
-                        <p>Provide your project details and we'll get back to you with a comprehensive quote. For the most accurate pricing, please email technical drawings or CAD files to <a href="mailto:info@qualifiedmachine.com"><span class="email-address">info@qualifiedmachine.com</span></a> after submitting this form.</p>
+                        <p>Provide your project details and we'll get back to you with a comprehensive quote. For the most accurate pricing, please email technical drawings or CAD files to <a href="mailto:info@qualifiedmachine.com"><button class="reveal-email">Click to reveal email</button></a> after submitting this form.</p>
                     </div>
                     
                     <form action="https://formsubmit.co/info@qualifiedmachine.com" method="POST" class="contact-form">
@@ -126,7 +126,7 @@
                             <textarea id="projectDescription" name="project_description" rows="6" required placeholder="Please describe your project, tolerances, finish requirements, etc."></textarea>
                         </div>
                         
-                        <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001"></div>
+                        <div class="h-captcha" data-sitekey="" class="h-captcha-dynamic"></div>
                         <button type="submit" class="btn-primary form-submit-btn">Request Quote</button>
                     </form>
                 </div>
@@ -162,8 +162,8 @@
                 <div class="footer-section contact">
                     <h3>Get in Touch</h3>
                     <p>11689 Sorrento Valley Rd, Suite F<br>San Diego, CA 92121</p>
-                    <p><span class="phone-number">(858) 259-9286</span></p>
-                    <p><span class="email-address">info@QualifiedMachine.com</span></p>
+                    <p><button class="reveal-phone">Click to reveal phone</button></p>
+                    <p><button class="reveal-email">Click to reveal email</button></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -173,5 +173,6 @@
     </footer>
     <script src="js/main.js"></script>
     <script src="js/captcha.js"></script>
+    <script src="js/contact-protection.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Our San Diego Machine Shop | Qualified Machine</title>
-    <meta name="description" content="Contact Qualified Machine, a leading machine shop in San Diego, CA. Located in Sorrento Valley. Call <span class="phone-number">(858) 259-9286</span> for a quote on your CNC machining project.">
+    <meta name="description" content="Contact Qualified Machine, a leading machine shop in San Diego, CA. Located in Sorrento Valley. Call <button class="reveal-phone">Click to reveal phone</button> for a quote on your CNC machining project.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/captcha.css">
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
@@ -14,7 +14,7 @@
     <header class="header">
         <div class="header-top">
             <div class="container">
-                <div>📞 <span class="phone-number"><span class="phone-number">(858) 259-9286</span></span> | ✉️ <span class="email-address"><span class="email-address">info@QualifiedMachine.com</span></span></div>
+                <div>📞 <span class="phone-number"><button class="reveal-phone">Click to reveal phone</button></span> | ✉️ <span class="email-address"><button class="reveal-email">Click to reveal email</button></span></div>
                 <div>Your San Diego Machine Shop Since 1980</div>
             </div>
         </div>
@@ -79,11 +79,11 @@
                         <div class="contact-details">
                             <div class="contact-item">
                                 <h4>Phone</h4>
-                                <p><a href="tel:8582599286" class="phone-number"><span class="phone-number">(858) 259-9286</span></a></p>
+                                <p><a href="tel:8582599286" class="phone-number"><button class="reveal-phone">Click to reveal phone</button></a></p>
                             </div>
                             <div class="contact-item">
                                 <h4>Email</h4>
-                                <p><a href="mailto:info@QualifiedMachine.com" class="email-address"><span class="email-address">info@QualifiedMachine.com</span></a></p>
+                                <p><a href="mailto:info@QualifiedMachine.com" class="email-address"><button class="reveal-email">Click to reveal email</button></a></p>
                             </div>
                             <div class="contact-item">
                                 <h4>Business Hours</h4>
@@ -125,7 +125,7 @@
                                 <label for="message">Message *</label>
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
-                            <div class="h-captcha" data-sitekey="10000000-ffff-ffff-ffff-000000000001"></div>
+                            <div class="h-captcha" data-sitekey="" class="h-captcha-dynamic"></div>
                             <button type="submit" class="btn-primary form-submit-btn">Send Message</button>
                         </form>
                     </div>
@@ -136,5 +136,6 @@
 
     <script src="js/main.js"></script>
     <script src="js/captcha.js"></script>
+    <script src="js/contact-protection.js"></script>
 </body>
 </html>
