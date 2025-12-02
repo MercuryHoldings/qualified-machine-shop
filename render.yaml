@@ -1,10 +1,6 @@
 services:
   - type: web
     name: qualified-machine-shop
-    env: static
+    env: python
     buildCommand: ""
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    startCommand: python3 server.py
