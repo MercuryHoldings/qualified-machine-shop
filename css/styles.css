@@ -138,7 +138,7 @@ p { margin-bottom: 1rem; color: var(--text-light); }
 }
 
 .header-top {
-  background-color: rgba(15, 41, 66, 0.9);
+  background-color: transparent;
   color: white;
   padding: 8px 0;
   font-size: 0.85rem;
