@@ -114,3 +114,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+/**
+ * Smooth page transitions - prevent white flash when navigating
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    // Add transition class on page load
+    document.documentElement.classList.add('page-transition-active');
+    
+    // Handle all internal link clicks
+    const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href^="../"], a[href^="index.html"], a[href^="about.html"], a[href^="services.html"], a[href^="contact.html"], a[href^="quote.html"], a[href^="capabilities.html"], a[href^="portfolio.html"], a[href^="fogbuster.html"], a[href^="aerospace-machining.html"], a[href^="cnc-milling.html"], a[href^="cnc-turning.html"], a[href^="privacy-policy.html"], a[href^="terms-and-conditions.html"]');
+    
+    internalLinks.forEach(link => {
+        // Skip if link has target="_blank" or is a download
+        if (link.target === '_blank' || link.hasAttribute('download')) {
+            return;
+        }
+        
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            // Skip if it's just an anchor link on the same page
+            if (href.startsWith('#')) {
+                return;
+            }
+            
+            e.preventDefault();
+            
+            // Add transition class
+            document.documentElement.classList.remove('page-transition-active');
+            document.documentElement.classList.add('page-transition');
+            
+            // Navigate after short delay
+            setTimeout(() => {
+                window.location.href = href;
+            }, 200);
+        });
+    });
+});
