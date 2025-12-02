@@ -62,12 +62,22 @@ function showCaptchaModal(type, realValue, element, originalHref) {
     
     // Render hCaptcha
     const captchaId = modal.querySelector('[class^="h-captcha"]').id;
+    let isProcessing = false;
     const widgetId = hcaptcha.render(captchaId, {
         sitekey: HCAPTCHA_SITE_KEY,
         callback: function(token) {
-            // Verification successful
-            revealContactInfo(type, realValue, element, originalHref);
-            document.body.removeChild(modal);
+            // Prevent double-processing
+            if (isProcessing) return;
+            isProcessing = true;
+            
+            // Small delay to ensure verification is complete
+            setTimeout(function() {
+                // Verification successful
+                revealContactInfo(type, realValue, element, originalHref);
+                if (document.body.contains(modal)) {
+                    document.body.removeChild(modal);
+                }
+            }, 300);
         }
     });
     
