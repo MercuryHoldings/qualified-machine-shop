@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Your Free Quote - San Diego Machine Shop</title>
+    <meta name="description" content="Get a free quote for precision CNC machining services from Qualified Machine Shop in San Diego. Fast turnaround, competitive pricing, and expert consultation.">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div>📞 (858) 259-9286 | ✉️ info@QualifiedMachine.com</div>
+                <div>Your San Diego Machine Shop Since 1980</div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo_final_transparent.png" alt="Qualified Machine Shop San Diego Logo">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a>
+                            <ul class="dropdown">
+                                <li><a href="cnc-milling.html">CNC Milling</a></li>
+                                <li><a href="cnc-turning.html">CNC Turning</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="fogbuster.html">Fog Buster</a></li>
+                        <li><a href="capabilities.html">Capabilities</a></li>
+                        <li><a href="aerospace-machining.html">Industries</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-right">
+                    <a href="quote.html" class="cta-button active">Get Quote</a>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+                </div>
+            </div>
+            <nav class="mobile-nav" id="mobileNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="fogbuster.html">Fog Buster</a></li>
+                    <li><a href="capabilities.html">Capabilities</a></li>
+                    <li><a href="aerospace-machining.html">Industries</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero" style="background-image: linear-gradient(rgba(15, 41, 66, 0.8), rgba(15, 41, 66, 0.8)), url('images/precision_engineering.jpg');">
+            <div class="container">
+                <h1>Get Your Free Machining Quote</h1>
+                <p>Quotes from our San Diego Shop in 24 Hours or Less</p>
+            </div>
+        </section>
+
+        <section class="page-content">
+            <div class="container">
+                <div class="form-container wide-form">
+                    <div class="section-title">
+                        <h2>Request Your Quote</h2>
+                        <p>Provide your project details and we'll get back to you with a comprehensive quote. For the most accurate pricing, please email technical drawings or CAD files to <a href="mailto:info@qualifiedmachine.com">info@qualifiedmachine.com</a> after submitting this form.</p>
+                    </div>
+                    
+                    <form action="https://formsubmit.co/info@qualifiedmachine.com" method="POST" class="contact-form">
+                        <input type="hidden" name="_subject" value="New Quote Request - Qualified Machine Shop">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://www.qualifiedmachine.com/quote.html#form-success">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="first_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="last_name" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                             <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                         <div class="form-row">
+                            <div class="form-group">
+                                <label for="material">Material</label>
+                                <input type="text" id="material" name="material" placeholder="e.g., Aluminum 6061">
+                            </div>
+                            <div class="form-group">
+                                <label for="quantity">Quantity</label>
+                                <input type="number" id="quantity" name="quantity" placeholder="Number of parts">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectDescription">Project Description *</label>
+                            <textarea id="projectDescription" name="project_description" rows="6" required placeholder="Please describe your project, tolerances, finish requirements, etc."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary form-submit-btn">Request Quote</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <img src="images/logo_orange_footer.png" alt="Qualified Machine Shop Footer Logo" class="footer-logo">
+                    <p>Your trusted partner for custom CNC machining and manufacturing solutions in San Diego, CA since 1980.</p>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="capabilities.html">Capabilities</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section links">
+                    <h3>Contact</h3>
+                     <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="quote.html">Get a Quote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section contact">
+                    <h3>Get in Touch</h3>
+                    <p>11689 Sorrento Valley Rd, Suite F<br>San Diego, CA 92121</p>
+                    <p>(858) 259-9286</p>
+                    <p>info@QualifiedMachine.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Qualified Machine Shop | San Diego, CA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
