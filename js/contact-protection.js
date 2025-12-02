@@ -20,8 +20,27 @@ async function fetchSiteKey() {
     }
 }
 
+// Wait for hCaptcha library to load
+function waitForHCaptcha() {
+    return new Promise((resolve) => {
+        if (typeof hcaptcha !== 'undefined') {
+            resolve();
+        } else {
+            const checkInterval = setInterval(() => {
+                if (typeof hcaptcha !== 'undefined') {
+                    clearInterval(checkInterval);
+                    resolve();
+                }
+            }, 100);
+        }
+    });
+}
+
 // Initialize hCaptcha for contact info reveal and forms
 async function initContactProtection() {
+    // Wait for hCaptcha library to load
+    await waitForHCaptcha();
+    
     // Fetch site key first
     await fetchSiteKey();
     
