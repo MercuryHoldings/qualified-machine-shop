@@ -126,7 +126,11 @@
                             <textarea id="projectDescription" name="project_description" rows="6" required placeholder="Please describe your project, tolerances, finish requirements, etc."></textarea>
                         </div>
                         
-                        <div class="h-captcha" data-sitekey="" class="h-captcha-dynamic"></div>
+                        <div class="captcha-loading" id="captcha-loading">
+                            <div class="captcha-spinner"></div>
+                            <div class="captcha-loading-text">Loading security verification...</div>
+                        </div>
+                        <div class="h-captcha loading" data-sitekey="" id="quote-captcha"></div>
                         <button type="submit" class="btn-primary form-submit-btn">Request Quote</button>
                     </form>
                 </div>

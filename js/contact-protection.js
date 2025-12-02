@@ -66,10 +66,27 @@ function initFormCaptchas() {
         
         // Render hCaptcha widget
         const widgetId = hcaptcha.render(container, {
-            sitekey: hcaptchaSiteKey
+            sitekey: hcaptchaSiteKey,
+            callback: () => {
+                // CAPTCHA completed
+            },
+            'error-callback': () => {
+                console.error('hCaptcha error');
+            },
+            'expired-callback': () => {
+                console.warn('hCaptcha expired');
+            }
         });
         
         formCaptchaWidgets[index] = widgetId;
+        
+        // Hide loading spinner and show CAPTCHA
+        const loadingSpinner = document.getElementById('captcha-loading');
+        if (loadingSpinner) {
+            loadingSpinner.style.display = 'none';
+        }
+        container.classList.remove('loading');
+        container.classList.add('loaded');
     });
     
     // Add form submission handlers

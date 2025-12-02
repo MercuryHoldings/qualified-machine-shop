@@ -125,7 +125,11 @@
                                 <label for="message">Message *</label>
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
-                            <div class="h-captcha" data-sitekey="" class="h-captcha-dynamic"></div>
+                            <div class="captcha-loading" id="captcha-loading">
+                                <div class="captcha-spinner"></div>
+                                <div class="captcha-loading-text">Loading security verification...</div>
+                            </div>
+                            <div class="h-captcha loading" data-sitekey="" id="contact-captcha"></div>
                             <button type="submit" class="btn-primary form-submit-btn">Send Message</button>
                         </form>
                     </div>
