@@ -12,7 +12,7 @@ HCAPTCHA_SECRET_KEY = os.environ.get('HCAPTCHA_SECRET_KEY', '')
 
 # Contact information (hidden until CAPTCHA is verified)
 CONTACT_INFO = {
-    'phone': '(619) 123-4567',
+    'phone': '(858) 259-9286',
     'email': 'info@qualifiedmachine.com'
 }
 
@@ -75,16 +75,16 @@ def verify_captcha():
             'error': str(e)
         }), 500
 
-@app.route('/api/submit-contact', methods=['POST'])
-def submit_contact():
-    """Handle contact form submission with CAPTCHA verification"""
+@app.route('/api/verify-form-captcha', methods=['POST'])
+def verify_form_captcha():
+    """Verify hCaptcha token for form submissions"""
     data = request.get_json()
-    token = data.get('h-captcha-response')
+    token = data.get('token')
     
     if not token:
-        return jsonify({'success': False, 'error': 'No CAPTCHA token provided'}), 400
+        return jsonify({'success': False, 'error': 'No token provided'}), 400
     
-    # Verify the hCaptcha token
+    # Verify the hCaptcha token with hCaptcha servers
     verify_url = 'https://hcaptcha.com/siteverify'
     verify_data = {
         'secret': HCAPTCHA_SECRET_KEY,
@@ -96,12 +96,7 @@ def submit_contact():
         result = response.json()
         
         if result.get('success'):
-            # CAPTCHA verified - process the form
-            # Here you would normally send an email or save to database
-            return jsonify({
-                'success': True,
-                'message': 'Thank you for your message. We will get back to you soon!'
-            })
+            return jsonify({'success': True})
         else:
             return jsonify({
                 'success': False,
