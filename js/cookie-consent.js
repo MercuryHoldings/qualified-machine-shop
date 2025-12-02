@@ -8,9 +8,19 @@
     const COOKIE_NAME = 'qms_cookie_consent';
     const COOKIE_EXPIRY_DAYS = 365;
     
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', function() {
+    // Initialize on page load - use multiple methods to ensure execution
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCookieConsent);
+    } else {
+        // DOM already loaded
         initCookieConsent();
+    }
+    
+    // Fallback: also try on window load
+    window.addEventListener('load', function() {
+        if (!document.querySelector('.cookie-consent-banner')) {
+            initCookieConsent();
+        }
     });
     
     function initCookieConsent() {
@@ -18,8 +28,8 @@
         const consent = getCookie(COOKIE_NAME);
         
         if (!consent) {
-            // Show banner after a short delay for better UX
-            setTimeout(showCookieBanner, 1000);
+            // Show banner immediately for testing
+            setTimeout(showCookieBanner, 500);
         }
     }
     

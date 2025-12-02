@@ -127,8 +127,8 @@ p { margin-bottom: 1rem; color: var(--text-light); }
 }
 
 .header.scrolled {
-  background-color: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 /* Solid header for non-homepage pages */
@@ -138,6 +138,15 @@ p { margin-bottom: 1rem; color: var(--text-light); }
 
 .header.solid-header .header-top {
   background-color: var(--primary-blue);
+}
+
+/* When solid-header scrolls, transition to white/transparent */
+.header.solid-header.scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.header.solid-header.scrolled .header-top {
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 .header-top {
