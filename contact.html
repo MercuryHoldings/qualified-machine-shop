@@ -6,12 +6,15 @@
     <title>Contact Our San Diego Machine Shop | Qualified Machine</title>
     <meta name="description" content="Contact Qualified Machine, a leading machine shop in San Diego, CA. Located in Sorrento Valley. Call (858) 259-9286 for a quote on your CNC machining project.">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/captcha.css">
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
     <header class="header">
         <div class="header-top">
             <div class="container">
-                <div>📞 (858) 259-9286 | ✉️ info@QualifiedMachine.com</div>
+                <div>📞 <span class="phone-number">(858) 259-9286</span> | ✉️ <span class="email-address">info@QualifiedMachine.com</span></div>
                 <div>Your San Diego Machine Shop Since 1980</div>
             </div>
         </div>
@@ -76,11 +79,11 @@
                         <div class="contact-details">
                             <div class="contact-item">
                                 <h4>Phone</h4>
-                                <p><a href="tel:8582599286">(858) 259-9286</a></p>
+                                <p><a href="tel:8582599286" class="phone-number">(858) 259-9286</a></p>
                             </div>
                             <div class="contact-item">
                                 <h4>Email</h4>
-                                <p><a href="mailto:info@QualifiedMachine.com">info@QualifiedMachine.com</a></p>
+                                <p><a href="mailto:info@QualifiedMachine.com" class="email-address">info@QualifiedMachine.com</a></p>
                             </div>
                             <div class="contact-item">
                                 <h4>Business Hours</h4>
@@ -128,56 +131,9 @@
                 </div>
             </div>
         </section>
-        
-        <section class="google-map-section">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.932321876542!2d-117.2169996848154!3d32.9038649809424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dc065e31758443%3A0x6e5894125867d345!2s11689%20Sorrento%20Valley%20Rd%20F%2C%20San%20Diego%2C%20CA%2092121!5e0!3m2!1sen!2sus!4v1662042012345!5m2!1sen!2sus" 
-                width="100%" 
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </section>
-
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section about">
-                    <img src="images/logo_orange_footer.png" alt="Qualified Machine Shop Footer Logo" class="footer-logo">
-                    <p>Your trusted partner for custom CNC machining and manufacturing solutions in San Diego, CA since 1980.</p>
-                </div>
-                <div class="footer-section links">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="capabilities.html">Capabilities</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section links">
-                    <h3>Contact</h3>
-                     <ul>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="quote.html">Get a Quote</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section contact">
-                    <h3>Get in Touch</h3>
-                    <p>11689 Sorrento Valley Rd, Suite F<br>San Diego, CA 92121</p>
-                    <p>(858) 259-9286</p>
-                    <p>info@QualifiedMachine.com</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Qualified Machine Shop | San Diego, CA. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
     <script src="js/main.js"></script>
+    <script src="js/captcha.js"></script>
 </body>
 </html>

@@ -1,0 +1,109 @@
+/* Legal Pages Styling - Privacy Policy & Terms & Conditions */
+
+.legal-content {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.legal-document {
+    background: white;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.legal-document h2 {
+    color: #1a3a52;
+    font-size: 28px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #f47920;
+    font-weight: 700;
+}
+
+.legal-document h2:first-of-type {
+    margin-top: 0;
+}
+
+.legal-document h3 {
+    color: #2c5f7f;
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.legal-document p {
+    color: #444;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.legal-document ul {
+    margin: 15px 0 20px 30px;
+    color: #444;
+}
+
+.legal-document li {
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+.legal-document strong {
+    color: #1a3a52;
+    font-weight: 600;
+}
+
+.contact-box {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid #f47920;
+    padding: 25px;
+    margin: 30px 0;
+    border-radius: 8px;
+}
+
+.contact-box p {
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.legal-notice {
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.legal-notice p {
+    margin: 0;
+    color: #856404;
+    font-weight: 500;
+    text-align: left;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .legal-document {
+        padding: 30px 20px;
+    }
+    
+    .legal-document h2 {
+        font-size: 24px;
+    }
+    
+    .legal-document h3 {
+        font-size: 20px;
+    }
+    
+    .legal-document p,
+    .legal-document li {
+        font-size: 15px;
+        text-align: left;
+    }
+}
