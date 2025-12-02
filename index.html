@@ -25,12 +25,14 @@
     
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/captcha.css">
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
     <header class="header">
         <div class="header-top">
             <div class="container">
-                <div>📞 (858) 259-9286 | ✉️ info@QualifiedMachine.com</div>
+                <div>📞 <span class="phone-number">(858) 259-9286</span> | ✉️ <span class="email-address">info@QualifiedMachine.com</span></div>
                 <div>Your San Diego Machine Shop Since 1980</div>
             </div>
         </div>
@@ -216,8 +218,8 @@
                 <div class="footer-section contact">
                     <h3>Get in Touch</h3>
                     <p>11689 Sorrento Valley Rd, Suite F<br>San Diego, CA 92121</p>
-                    <p>(858) 259-9286</p>
-                    <p>info@QualifiedMachine.com</p>
+                    <p><span class="phone-number">(858) 259-9286</span></p>
+                    <p><span class="email-address">info@QualifiedMachine.com</span></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -236,7 +238,7 @@
       "image": "https://qualified-machine-shop.onrender.com/images/logo_final_transparent.png",
       "@id": "https://qualified-machine-shop.onrender.com",
       "url": "https://qualified-machine-shop.onrender.com",
-      "telephone": "+18582599286",
+      "telephone": "+1<span class="phone-number">8582599286</span>",
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
@@ -269,5 +271,6 @@
       "description": "Precision CNC machining services in San Diego. 45+ years of experience serving aerospace, medical device, automotive, and technology industries with expert custom manufacturing solutions."
     }
     </script>
+    <script src="js/captcha.js"></script>
 </body>
 </html>
