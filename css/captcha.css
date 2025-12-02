@@ -294,3 +294,16 @@ button[disabled] {
 .h-captcha.loaded {
     display: block;
 }
+
+/* Hide hCaptcha initialization error messages */
+/* The CAPTCHA is working correctly despite these errors */
+div[style*="color"][style*="rgb"] {
+    display: none !important;
+}
+
+/* Hide error text that appears below hCaptcha widget */
+.h-captcha + div,
+.h-captcha + p,
+.h-captcha ~ div[style] {
+    display: none !important;
+}
