@@ -186,6 +186,12 @@ p { margin-bottom: 1rem; color: var(--text-light); }
   position: relative;
 }
 
+/* White navigation links on transparent header */
+.header:not(.scrolled):not(.solid) .nav a {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
 .nav a:after {
   content: '';
   position: absolute;
@@ -268,14 +274,16 @@ body:not(.home-page) main {
 /* --- Hero Sections --- */
 .hero-home {
   position: relative;
-  height: calc(100vh - var(--header-height));
-  min-height: 500px;
+  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
   overflow: hidden;
+  margin-top: calc(-1 * var(--header-height));
+  padding-top: var(--header-height);
 }
 
 .hero-video {
