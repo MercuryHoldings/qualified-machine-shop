@@ -134,7 +134,7 @@ p { margin-bottom: 1rem; color: var(--text-light); }
 /* Solid header styling removed - all pages now use transparent header with scroll transition */
 
 .header-top {
-  background-color: transparent;
+  background-color: var(--primary-blue);
   color: white;
   padding: 8px 0;
   font-size: 0.85rem;
