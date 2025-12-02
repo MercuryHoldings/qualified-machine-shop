@@ -80,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 /**
  * Header scroll effect - makes header opaque when scrolling
+ * Applied to all pages site-wide
  */
 document.addEventListener('DOMContentLoaded', function() {
     const header = document.querySelector('.header');
@@ -91,25 +92,22 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isHomePage) {
         // Add home-page class to body
         body.classList.add('home-page');
-        
-        // Add scroll event listener for transparent-to-opaque effect
-        let scrollTimeout;
-        window.addEventListener('scroll', function() {
-            // Debounce scroll events for performance
-            if (scrollTimeout) {
-                window.cancelAnimationFrame(scrollTimeout);
-            }
-            
-            scrollTimeout = window.requestAnimationFrame(function() {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-        });
-    } else {
-        // For non-homepage pages, add solid class immediately
-        header.classList.add('solid');
     }
+    
+    // Add scroll event listener for transparent-to-opaque effect on ALL pages
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        // Debounce scroll events for performance
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+        
+        scrollTimeout = window.requestAnimationFrame(function() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    });
 });

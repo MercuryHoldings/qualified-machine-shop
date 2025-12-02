@@ -23,9 +23,23 @@
     <meta property="twitter:description" content="Top San Diego machine shop offering precision CNC machining with 45+ years of experience.">
     <meta property="twitter:image" content="https://qualified-machine-shop.onrender.com/images/logo_final_transparent.png">
     
+    <link rel="preload" href="css/styles.css" as="style">
+    <link rel="preload" href="css/captcha.css" as="style">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="css/captcha.css">
+    <style>
+        /* Prevent FOUC (Flash of Unstyled Content) */
+        html {
+            visibility: hidden;
+            opacity: 0;
+        }
+        html.loaded {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+    </style>
     <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
@@ -40,7 +54,8 @@
             <div class="container">
                 <div class="logo">
                     <a href="index.html">
-                        <img src="images/logo_final_transparent.png" alt="Qualified Machine Shop San Diego Logo">
+                        <img src="images/logo_orange.png" alt="Qualified Machine Shop San Diego Logo" class="logo-transparent">
+                        <img src="images/logo_final_transparent.png" alt="Qualified Machine Shop San Diego Logo" class="logo-solid">
                     </a>
                 </div>
                 <nav class="nav">
@@ -94,7 +109,7 @@
             <div class="hero-crossfade"></div>
             <div class="hero-overlay"></div>
             <div class="container">
-                <h1>Precision CNC Machining<br><span class="highlight">in San Diego, CA</span></h1>
+                <h1>Precision Machining<br><span class="highlight">in San Diego, CA</span></h1>
                 <p>Qualified Machine is the trusted local machine shop for innovators, entrepreneurs, and industry leaders in San Diego's technology corridor. We deliver expert custom manufacturing solutions.</p>
                 <div class="hero-buttons">
                     <a href="quote.html" class="btn-primary">Get Free Quote</a>
@@ -273,5 +288,11 @@
     </script>
     <script src="js/captcha.js"></script>
     <script src="js/contact-protection.js"></script>
+    <script>
+        // Add loaded class to prevent FOUC
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.classList.add('loaded');
+        });
+    </script>
 </body>
 </html>
