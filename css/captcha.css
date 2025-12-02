@@ -307,3 +307,212 @@ div[style*="color"][style*="rgb"] {
 .h-captcha ~ div[style] {
     display: none !important;
 }
+
+/* ===== REVEAL BUTTON STYLING ===== */
+/* Professional styling for "Click to reveal" buttons in header and footer */
+
+.reveal-email,
+.reveal-phone,
+button[onclick*="revealContact"],
+a[onclick*="revealContact"],
+span.email-address:not(.contact-info-revealed),
+span.phone-number:not(.contact-info-revealed) {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #f47920 0%, #ff8534 100%);
+    color: #ffffff !important;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(244, 121, 32, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal-email::before,
+.reveal-phone::before,
+button[onclick*="email"]::before,
+a[onclick*="email"]::before,
+span.email-address:not(.contact-info-revealed)::before {
+    content: "✉";
+    font-size: 16px;
+}
+
+button[onclick*="phone"]::before,
+a[onclick*="phone"]::before,
+span.phone-number:not(.contact-info-revealed)::before {
+    content: "📞";
+    font-size: 16px;
+}
+
+.reveal-email:hover,
+.reveal-phone:hover,
+button[onclick*="revealContact"]:hover,
+a[onclick*="revealContact"]:hover,
+span.email-address:not(.contact-info-revealed):hover,
+span.phone-number:not(.contact-info-revealed):hover {
+    background: linear-gradient(135deg, #ff8534 0%, #f47920 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 121, 32, 0.35);
+    color: #ffffff !important;
+}
+
+.reveal-email:active,
+.reveal-phone:active,
+button[onclick*="revealContact"]:active,
+a[onclick*="revealContact"]:active,
+span.email-address:not(.contact-info-revealed):active,
+span.phone-number:not(.contact-info-revealed):active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(244, 121, 32, 0.3);
+}
+
+/* Revealed contact info styling */
+.contact-info-revealed {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #1a3a52 0%, #2c5f7f 100%);
+    color: #ffffff !important;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(26, 58, 82, 0.25);
+    animation: revealFadeIn 0.5s ease;
+}
+
+.email-revealed::before {
+    content: "✉";
+    font-size: 16px;
+}
+
+.phone-revealed::before {
+    content: "📞";
+    font-size: 16px;
+}
+
+.contact-info-revealed:hover {
+    background: linear-gradient(135deg, #f47920 0%, #ff8534 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 121, 32, 0.35);
+    color: #ffffff !important;
+}
+
+@keyframes revealFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Modal overlay styling for new modal structure */
+.captcha-modal-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
+}
+
+.captcha-modal-overlay .captcha-modal {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: slideIn 0.3s ease;
+}
+
+.captcha-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.captcha-modal-close:hover,
+.captcha-modal-close:focus {
+    color: #f47920;
+}
+
+.captcha-modal h3 {
+    color: #1a3a52;
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.captcha-modal p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.captcha-modal .error-message {
+    color: #d32f2f;
+    background: #ffebee;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 14px;
+    border-left: 4px solid #d32f2f;
+}
+
+/* Responsive styling for reveal buttons */
+@media (max-width: 768px) {
+    .reveal-email,
+    .reveal-phone,
+    button[onclick*="revealContact"],
+    a[onclick*="revealContact"],
+    span.email-address:not(.contact-info-revealed),
+    span.phone-number:not(.contact-info-revealed),
+    .contact-info-revealed {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    
+    .reveal-email::before,
+    .reveal-phone::before,
+    button[onclick*="email"]::before,
+    a[onclick*="email"]::before,
+    span.email-address:not(.contact-info-revealed)::before,
+    button[onclick*="phone"]::before,
+    a[onclick*="phone"]::before,
+    span.phone-number:not(.contact-info-revealed)::before,
+    .email-revealed::before,
+    .phone-revealed::before {
+        font-size: 14px;
+    }
+}

@@ -117,20 +117,38 @@ p { margin-bottom: 1rem; color: var(--text-light); }
 
 /* --- Header --- */
 .header {
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-  position: sticky;
+  background-color: transparent;
+  box-shadow: none;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* Solid header for non-homepage pages */
+.header.solid {
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
 .header-top {
-  background-color: var(--primary-blue);
+  background-color: rgba(15, 41, 66, 0.9);
   color: white;
   padding: 8px 0;
   font-size: 0.85rem;
   text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.header.scrolled .header-top,
+.header.solid .header-top {
+  background-color: var(--primary-blue);
 }
 
 .header-top .container {
@@ -235,7 +253,12 @@ p { margin-bottom: 1rem; color: var(--text-light); }
 
 /* --- Main Content & Sections --- */
 main {
-  padding-top: 0; /* Header is sticky, no padding needed */
+  padding-top: 0; /* Header is fixed, no padding needed for homepage */
+}
+
+/* Add padding for pages with solid headers */
+body:not(.home-page) main {
+  padding-top: 88px; /* Height of header */
 }
 
 .page-content {

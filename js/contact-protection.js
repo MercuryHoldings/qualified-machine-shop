@@ -6,6 +6,10 @@
 
 let hcaptchaSiteKey = null;
 let formCaptchaWidgets = {};
+let revealedContacts = {
+    email: null,
+    phone: null
+};
 
 // Fetch the hCaptcha site key from the server
 async function fetchSiteKey() {
@@ -146,30 +150,42 @@ async function handleFormSubmit(e) {
 
 // Initialize reveal buttons
 function initRevealButtons() {
-    const emailButtons = document.querySelectorAll('.reveal-email, button[onclick*="revealContact"][onclick*="email"]');
-    const phoneButtons = document.querySelectorAll('.reveal-phone, button[onclick*="revealContact"][onclick*="phone"]');
+    const emailButtons = document.querySelectorAll('.reveal-email, button[onclick*="revealContact"][onclick*="email"], a[onclick*="revealContact"][onclick*="email"], span.email-address');
+    const phoneButtons = document.querySelectorAll('.reveal-phone, button[onclick*="revealContact"][onclick*="phone"], a[onclick*="revealContact"][onclick*="phone"], span.phone-number');
     
     emailButtons.forEach(button => {
         // Remove inline onclick if present
         button.removeAttribute('onclick');
+        button.style.cursor = 'pointer';
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            showCaptchaModal('email', button);
+            // Check if already revealed
+            if (revealedContacts.email) {
+                replaceAllContactButtons('email', revealedContacts.email);
+            } else {
+                showCaptchaModal('email');
+            }
         });
     });
     
     phoneButtons.forEach(button => {
         // Remove inline onclick if present
         button.removeAttribute('onclick');
+        button.style.cursor = 'pointer';
         button.addEventListener('click', (e) => {
             e.preventDefault();
-            showCaptchaModal('phone', button);
+            // Check if already revealed
+            if (revealedContacts.phone) {
+                replaceAllContactButtons('phone', revealedContacts.phone);
+            } else {
+                showCaptchaModal('phone');
+            }
         });
     });
 }
 
 // Show CAPTCHA modal for contact info reveal
-function showCaptchaModal(type, button) {
+function showCaptchaModal(type) {
     // Create modal overlay
     const modal = document.createElement('div');
     modal.className = 'captcha-modal-overlay';
@@ -202,12 +218,12 @@ function showCaptchaModal(type, button) {
     const containerId = modal.querySelector('[id^="captcha-container-"]').id;
     const widgetId = hcaptcha.render(containerId, {
         sitekey: hcaptchaSiteKey,
-        callback: (token) => handleCaptchaSuccess(token, type, button, modal)
+        callback: (token) => handleCaptchaSuccess(token, type, modal)
     });
 }
 
 // Handle successful CAPTCHA verification for contact info reveal
-async function handleCaptchaSuccess(token, type, button, modal) {
+async function handleCaptchaSuccess(token, type, modal) {
     try {
         const response = await fetch('/api/verify-captcha', {
             method: 'POST',
@@ -223,12 +239,11 @@ async function handleCaptchaSuccess(token, type, button, modal) {
         const result = await response.json();
         
         if (result.success) {
-            // Replace button with actual contact info
-            if (type === 'email') {
-                button.outerHTML = `<a href="mailto:${result.data}" class="contact-info-revealed">${result.data}</a>`;
-            } else {
-                button.outerHTML = `<a href="tel:${result.data.replace(/[^0-9]/g, '')}" class="contact-info-revealed">${result.data}</a>`;
-            }
+            // Store the revealed contact info
+            revealedContacts[type] = result.data;
+            
+            // Replace ALL buttons of this type with actual contact info
+            replaceAllContactButtons(type, result.data);
             
             // Close modal
             document.body.removeChild(modal);
@@ -241,6 +256,31 @@ async function handleCaptchaSuccess(token, type, button, modal) {
     }
 }
 
+// Replace all contact buttons of a specific type with the actual contact info
+function replaceAllContactButtons(type, contactInfo) {
+    let buttons;
+    let linkHTML;
+    
+    if (type === 'email') {
+        buttons = document.querySelectorAll('.reveal-email, button[onclick*="email"], a[onclick*="email"], span.email-address');
+        linkHTML = `<a href="mailto:${contactInfo}" class="contact-info-revealed email-revealed">${contactInfo}</a>`;
+    } else {
+        buttons = document.querySelectorAll('.reveal-phone, button[onclick*="phone"], a[onclick*="phone"], span.phone-number');
+        const phoneClean = contactInfo.replace(/[^0-9]/g, '');
+        linkHTML = `<a href="tel:${phoneClean}" class="contact-info-revealed phone-revealed">${contactInfo}</a>`;
+    }
+    
+    buttons.forEach(button => {
+        // Create a temporary container to parse the HTML
+        const temp = document.createElement('div');
+        temp.innerHTML = linkHTML;
+        const newElement = temp.firstChild;
+        
+        // Replace the button with the new link
+        button.parentNode.replaceChild(newElement, button);
+    });
+}
+
 // Show error message in modal
 function showError(modal, message) {
     const resultDiv = modal.querySelector('#captcha-result');
@@ -250,7 +290,7 @@ function showError(modal, message) {
 // Global function for inline onclick handlers (backwards compatibility)
 function revealContact(type) {
     const button = event.target;
-    showCaptchaModal(type, button);
+    showCaptchaModal(type);
 }
 
 // Initialize when DOM is ready
