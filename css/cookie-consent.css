@@ -6,11 +6,15 @@
     bottom: 0;
     left: 0;
     right: 0;
+    width: 100%;
     background: linear-gradient(135deg, #0f2942 0%, #1a3a52 100%);
     color: white;
     padding: 20px;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
+    z-index: 99999;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 @keyframes slideUp {
