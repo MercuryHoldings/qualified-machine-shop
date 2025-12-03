@@ -191,6 +191,30 @@ p { margin-bottom: 1rem; color: var(--text-light); }
   flex-wrap: wrap;
 }
 
+.header-contact-info {
+  display: inline;
+}
+
+/* Mobile-only: Stack phone and email vertically */
+@media (max-width: 767px) {
+  .header-contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    line-height: 1.4;
+  }
+  
+  .header-contact-info .contact-separator {
+    display: none;
+  }
+  
+  .header-contact-info .phone-number,
+  .header-contact-info .email-address {
+    display: block;
+  }
+}
+
 .header-main {
   padding: 10px 0;
 }
