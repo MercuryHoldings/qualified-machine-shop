@@ -986,3 +986,60 @@ body:not(.home-page) main {
   max-height: 100%;
   object-fit: contain; /* This is the key property to prevent cropping */
 }
+
+/* --- Additional Mobile Optimizations --- */
+@media (max-width: 480px) {
+  /* Extra small phones */
+  .hero-home h1 { font-size: 1.8rem; }
+  .hero-home p { font-size: 0.9rem; }
+  
+  .stats-grid { grid-template-columns: 1fr; }
+  
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .header-top .container {
+    font-size: 0.85rem;
+  }
+  
+  /* Ensure images don't overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Better touch targets for mobile */
+  button, a.btn, .nav a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve form usability on mobile */
+  input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Improve image loading performance */
+img {
+  loading: lazy;
+}
+
+/* Ensure cookie banner is mobile-friendly */
+@media (max-width: 768px) {
+  .cookie-consent-banner {
+    padding: 15px;
+    font-size: 0.85rem;
+  }
+  
+  .cookie-consent-banner .cookie-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cookie-consent-banner button {
+    width: 100%;
+  }
+}

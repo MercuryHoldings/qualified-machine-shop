@@ -1,0 +1,13 @@
+# robots.txt for www.qualifiedmachine.com
+
+User-agent: *
+Allow: /
+
+# Disallow admin or test pages
+Disallow: /cookie-test.html
+
+# Sitemap location
+Sitemap: https://www.qualifiedmachine.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
