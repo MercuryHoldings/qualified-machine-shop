@@ -195,23 +195,38 @@ p { margin-bottom: 1rem; color: var(--text-light); }
   display: inline;
 }
 
-/* Mobile-only: Stack phone and email vertically */
+/* Mobile-only: Compact horizontal layout with smaller text */
 @media (max-width: 767px) {
+  .header-top {
+    padding: 6px 0;
+    font-size: 0.75rem;
+  }
+  
+  .header-top .container {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .header-top .container > div:last-child {
+    font-size: 0.7rem;
+    opacity: 0.9;
+  }
+  
   .header-contact-info {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 5px;
-    line-height: 1.4;
+    gap: 8px;
+    flex-wrap: nowrap;
   }
   
-  .header-contact-info .contact-separator {
-    display: none;
+  .header-contact-info button {
+    font-size: 0.75rem;
+    padding: 0;
+    min-height: auto;
   }
   
-  .header-contact-info .phone-number,
-  .header-contact-info .email-address {
-    display: block;
+  .contact-separator {
+    margin: 0 2px;
   }
 }
 
