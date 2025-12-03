@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Banner Test</title>
+    <link rel="stylesheet" href="css/cookie-consent.css">
+</head>
+<body style="background: #f0f0f0; padding: 50px;">
+    <h1>Cookie Banner Test Page</h1>
+    <p>The cookie banner should appear at the bottom of this page.</p>
+    
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="cookie-consent-banner">
+        <div class="cookie-consent-container">
+            <div class="cookie-consent-text">
+                <p>
+                    We use cookies to enhance your browsing experience and analyze our traffic. 
+                    By clicking "Accept All", you consent to our use of cookies. 
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                </p>
+            </div>
+            <div class="cookie-consent-buttons">
+                <button class="cookie-consent-btn cookie-accept-btn" onclick="acceptCookies()">Accept All</button>
+                <button class="cookie-consent-btn cookie-decline-btn" onclick="declineCookies()">Decline</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/cookie-consent.js"></script>
+</body>
+</html>
