@@ -150,37 +150,62 @@ async function handleFormSubmit(e) {
 
 // Initialize reveal buttons
 function initRevealButtons() {
+    // Use a Set to track processed buttons and avoid duplicates
+    const processedButtons = new Set();
+    
     const emailButtons = document.querySelectorAll('.reveal-email, button[onclick*="revealContact"][onclick*="email"], a[onclick*="revealContact"][onclick*="email"], span.email-address');
     const phoneButtons = document.querySelectorAll('.reveal-phone, button[onclick*="revealContact"][onclick*="phone"], a[onclick*="revealContact"][onclick*="phone"], span.phone-number');
     
     emailButtons.forEach(button => {
+        // Skip if already processed
+        if (processedButtons.has(button)) return;
+        processedButtons.add(button);
+        
         // Remove inline onclick if present
         button.removeAttribute('onclick');
         button.style.cursor = 'pointer';
-        button.addEventListener('click', (e) => {
+        
+        // Remove any existing listeners by cloning the node
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+        
+        // Add single click listener
+        newButton.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             // Check if already revealed
             if (revealedContacts.email) {
                 replaceAllContactButtons('email', revealedContacts.email);
             } else {
                 showCaptchaModal('email');
             }
-        });
+        }, { once: false });
     });
     
     phoneButtons.forEach(button => {
+        // Skip if already processed
+        if (processedButtons.has(button)) return;
+        processedButtons.add(button);
+        
         // Remove inline onclick if present
         button.removeAttribute('onclick');
         button.style.cursor = 'pointer';
-        button.addEventListener('click', (e) => {
+        
+        // Remove any existing listeners by cloning the node
+        const newButton = button.cloneNode(true);
+        button.parentNode.replaceChild(newButton, button);
+        
+        // Add single click listener
+        newButton.addEventListener('click', (e) => {
             e.preventDefault();
+            e.stopPropagation();
             // Check if already revealed
             if (revealedContacts.phone) {
                 replaceAllContactButtons('phone', revealedContacts.phone);
             } else {
                 showCaptchaModal('phone');
             }
-        });
+        }, { once: false });
     });
 }
 

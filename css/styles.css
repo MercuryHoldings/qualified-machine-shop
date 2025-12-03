@@ -18,6 +18,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Prevent white flash during page transitions */
+  background-color: var(--primary-blue);
 }
 
 body {
@@ -26,14 +28,14 @@ body {
   color: var(--text-dark);
   background-color: #ffffff;
   overflow-x: hidden;
-  /* Smooth page transitions - prevent white flash */
-  opacity: 1;
-  transition: opacity 0.15s ease-in;
+  /* Start hidden to prevent flash of unstyled content */
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
-/* Prevent flash on page load */
-body.loading {
-  opacity: 0;
+/* Show body once loaded */
+body.loaded {
+  opacity: 1;
 }
 
 .container {
