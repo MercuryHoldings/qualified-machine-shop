@@ -404,15 +404,19 @@ span.phone-number:not(.contact-info-revealed):hover {
 
 .captcha-modal-overlay .captcha-modal {
     background-color: #ffffff;
-    padding: 20px;
+    padding: 30px 25px;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     width: 90%;
-    max-width: 300px;
-    max-height: 90vh;
+    max-width: 320px;
+    min-height: 280px;
+    max-height: 400px;
     overflow-y: auto;
     position: relative;
     animation: slideIn 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .captcha-modal-close {

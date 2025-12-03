@@ -1,53 +1,19 @@
 // Cookie Consent Banner - CCPA Compliant
-// Qualified Machine Shop - Aggressive Display Approach
+// Qualified Machine Shop - Show by default, hide only after interaction
 
 const COOKIE_NAME = 'qms_cookie_consent';
 const COOKIE_EXPIRY_DAYS = 365;
 
-// Function to show the banner
-function showCookieBanner() {
+// Check if cookie exists and hide banner if it does
+window.addEventListener('DOMContentLoaded', function() {
     const banner = document.getElementById('cookie-banner');
-    if (banner && !getCookie(COOKIE_NAME)) {
-        banner.style.display = 'block';
-        banner.style.opacity = '1';
-        console.log('Cookie banner displayed');
-        return true;
-    } else if (getCookie(COOKIE_NAME)) {
-        console.log('Cookie consent already set:', getCookie(COOKIE_NAME));
-        return false;
+    if (banner && getCookie(COOKIE_NAME)) {
+        banner.style.display = 'none';
+        console.log('Cookie consent already set, banner hidden');
+    } else {
+        console.log('No cookie consent found, banner visible');
     }
-    return false;
-}
-
-// Try multiple times to show the banner
-function initCookieBanner() {
-    // Try immediately
-    if (showCookieBanner()) return;
-    
-    // Try after 100ms
-    setTimeout(function() {
-        if (showCookieBanner()) return;
-        
-        // Try after 500ms
-        setTimeout(function() {
-            if (showCookieBanner()) return;
-            
-            // Final try after 1000ms
-            setTimeout(showCookieBanner, 1000);
-        }, 400);
-    }, 100);
-}
-
-// Listen to multiple events
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCookieBanner);
-} else {
-    // DOM already loaded
-    initCookieBanner();
-}
-
-// Also listen to window load as backup
-window.addEventListener('load', initCookieBanner);
+});
 
 // Accept cookies function
 function acceptCookies() {
