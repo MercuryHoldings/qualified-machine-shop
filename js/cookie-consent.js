@@ -1,19 +1,8 @@
 // Cookie Consent Banner - CCPA Compliant
-// Qualified Machine Shop - Show by default, hide only after interaction
+// Qualified Machine Shop - Always show until user interacts
 
 const COOKIE_NAME = 'qms_cookie_consent';
 const COOKIE_EXPIRY_DAYS = 365;
-
-// Check if cookie exists and hide banner if it does
-window.addEventListener('DOMContentLoaded', function() {
-    const banner = document.getElementById('cookie-banner');
-    if (banner && getCookie(COOKIE_NAME)) {
-        banner.style.display = 'none';
-        console.log('Cookie consent already set, banner hidden');
-    } else {
-        console.log('No cookie consent found, banner visible');
-    }
-});
 
 // Accept cookies function
 function acceptCookies() {
