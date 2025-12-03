@@ -93,11 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (isHomePage) {
         // Add home-page class to body
         body.classList.add('home-page');
-    } else if (isQuotePage) {
-        // Quote page should show orange logo pre-scroll (no solid-header class)
-        // Will transition to white background on scroll
     } else {
-        // Add solid-header class for non-homepage pages
+        // Add solid-header class for all non-homepage pages (including quote)
         header.classList.add('solid-header');
     }
     

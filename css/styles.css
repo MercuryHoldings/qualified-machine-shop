@@ -217,6 +217,15 @@ p { margin-bottom: 1rem; color: var(--text-light); }
   opacity: 1;
 }
 
+/* Quote page: Keep orange logo visible even with solid-header class */
+body[data-page="quote"] .header.solid-header:not(.scrolled) .logo .logo-transparent {
+  opacity: 1;
+}
+
+body[data-page="quote"] .header.solid-header:not(.scrolled) .logo .logo-solid {
+  opacity: 0;
+}
+
 .nav ul {
   display: flex;
   list-style: none;
