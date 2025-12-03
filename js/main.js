@@ -88,10 +88,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check if we're on the homepage
     const isHomePage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+    const isQuotePage = body.getAttribute('data-page') === 'quote';
     
     if (isHomePage) {
         // Add home-page class to body
         body.classList.add('home-page');
+    } else if (isQuotePage) {
+        // Quote page should show orange logo pre-scroll (no solid-header class)
+        // Will transition to white background on scroll
     } else {
         // Add solid-header class for non-homepage pages
         header.classList.add('solid-header');
@@ -115,4 +119,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Page transition code removed - was causing white screen flash
+/**
+ * Smooth page transitions - prevent white flash
+ */
+// Remove loading class after page fully loads
+window.addEventListener('load', function() {
+    document.body.classList.remove('loading');
+});
+
+// Add loading class before navigation
+window.addEventListener('beforeunload', function() {
+    document.body.classList.add('loading');
+});

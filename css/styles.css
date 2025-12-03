@@ -26,6 +26,14 @@ body {
   color: var(--text-dark);
   background-color: #ffffff;
   overflow-x: hidden;
+  /* Smooth page transitions - prevent white flash */
+  opacity: 1;
+  transition: opacity 0.15s ease-in;
+}
+
+/* Prevent flash on page load */
+body.loading {
+  opacity: 0;
 }
 
 .container {
@@ -263,6 +271,17 @@ p { margin-bottom: 1rem; color: var(--text-light); }
   font-size: 28px;
   color: var(--primary-blue);
   cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Mobile menu button white on non-home pages pre-scroll */
+.header.solid-header .mobile-menu-btn {
+  color: white;
+}
+
+/* Mobile menu button blue when scrolled */
+.header.solid-header.scrolled .mobile-menu-btn {
+  color: var(--primary-blue);
 }
 
 .mobile-nav {
