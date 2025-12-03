@@ -28,8 +28,10 @@
         const consent = getCookie(COOKIE_NAME);
         
         if (!consent) {
-            // Show banner immediately for testing
-            setTimeout(showCookieBanner, 500);
+            // Show banner after short delay
+            setTimeout(showCookieBanner, 1000);
+        } else {
+            console.log('Cookie consent already set:', consent);
         }
     }
     

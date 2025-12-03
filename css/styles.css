@@ -931,6 +931,7 @@ body:not(.home-page) main {
   list-style: none;
   padding: 10px 0;
   margin-top: 0; /* FIX: Removed the margin that caused the gap */
+  transition: background-color 0.3s ease;
   padding-top: 25px; /* FIX: Added padding to maintain visual separation */
   z-index: 1001;
   width: 220px; /* Set a width for the dropdown */
@@ -951,6 +952,22 @@ body:not(.home-page) main {
   color: var(--text-dark);
   font-weight: 500;
   white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dropdown styling for transparent header */
+.header:not(.scrolled) .nav .dropdown {
+  background-color: rgba(15, 41, 66, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header:not(.scrolled) .nav .dropdown a {
+  color: #ffffff;
+}
+
+.header:not(.scrolled) .nav .dropdown a:hover {
+  background-color: rgba(242, 101, 34, 0.2);
+  color: var(--primary-orange);
 }
 
 .nav .dropdown a:hover {
