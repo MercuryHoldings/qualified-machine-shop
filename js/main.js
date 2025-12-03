@@ -20,24 +20,6 @@ document.addEventListener('click', function(event) {
 });
 
 /**
- * Handle smooth page load transition
- */
-// Add 'loaded' class to body once DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        document.body.classList.add('loaded');
-    });
-} else {
-    // DOM already loaded
-    document.body.classList.add('loaded');
-}
-
-// Also ensure body is shown after window load (all resources loaded)
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-});
-
-/**
  * Handles the sequential hero video playback with crossfade transitions.
  */
 document.addEventListener('DOMContentLoaded', function() {

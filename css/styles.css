@@ -18,7 +18,7 @@
 
 html {
   scroll-behavior: smooth;
-  /* Prevent white flash during page transitions */
+  /* Set background to match header to minimize transition flash */
   background-color: var(--primary-blue);
 }
 
@@ -28,14 +28,18 @@ body {
   color: var(--text-dark);
   background-color: #ffffff;
   overflow-x: hidden;
-  /* Start hidden to prevent flash of unstyled content */
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  /* Use CSS animation for smooth page load - no JavaScript required */
+  animation: fadeInPage 0.25s ease-in;
 }
 
-/* Show body once loaded */
-body.loaded {
-  opacity: 1;
+/* Fade in animation for smooth page load */
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .container {
