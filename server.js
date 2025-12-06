@@ -18,8 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 
 // hCaptcha configuration
-const HCAPTCHA_SECRET = process.env.HCAPTCHA_SECRET || '0x0000000000000000000000000000000000000000';
-const HCAPTCHA_SITEKEY = process.env.HCAPTCHA_SITEKEY || '10000000-ffff-ffff-ffff-000000000001';
+const HCAPTCHA_SECRET = process.env.HCAPTCHA_SECRET_KEY || '0x0000000000000000000000000000000000000000';
+const HCAPTCHA_SITEKEY = process.env.HCAPTCHA_SITE_KEY || '10000000-ffff-ffff-ffff-000000000001';
 
 // Email configuration
 const EMAIL_USER = process.env.EMAIL_USER || 'info@qualifiedmachine.com';
