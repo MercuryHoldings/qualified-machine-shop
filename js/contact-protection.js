@@ -82,6 +82,8 @@ function initFormCaptchas() {
             }
         });
         
+        // Store widget ID on the container for easy retrieval
+        container.setAttribute('data-widget-id', widgetId);
         formCaptchaWidgets[index] = widgetId;
         
         // Hide loading spinner and show CAPTCHA
@@ -113,8 +115,17 @@ async function handleFormSubmit(e) {
         return;
     }
     
-    // Get hCaptcha response
-    const captchaResponse = hcaptcha.getResponse(captchaContainer);
+    // Get hCaptcha response using the widget ID stored on the container
+    let captchaResponse = '';
+    const widgetId = captchaContainer.getAttribute('data-widget-id');
+    
+    if (widgetId) {
+        try {
+            captchaResponse = hcaptcha.getResponse(parseInt(widgetId));
+        } catch (error) {
+            console.error('Error getting hCaptcha response:', error);
+        }
+    }
     
     if (!captchaResponse) {
         alert('Please complete the CAPTCHA verification.');
@@ -158,10 +169,14 @@ async function handleFormSubmit(e) {
             
             // Reset form
             form.reset();
-            hcaptcha.reset(captchaContainer);
+            if (widgetId) {
+                hcaptcha.reset(parseInt(widgetId));
+            }
         } else {
             alert(result.message || 'Failed to send message. Please try again.');
-            hcaptcha.reset(captchaContainer);
+            if (widgetId) {
+                hcaptcha.reset(parseInt(widgetId));
+            }
         }
     } catch (error) {
         console.error('Error submitting form:', error);
