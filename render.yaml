@@ -1,6 +1,19 @@
 services:
   - type: web
     name: qualified-machine-shop
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python3 server.py
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HCAPTCHA_SECRET
+        sync: false
+      - key: HCAPTCHA_SITEKEY
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: EMAIL_TO
+        value: info@qualifiedmachine.com

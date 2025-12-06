@@ -114,37 +114,62 @@ async function handleFormSubmit(e) {
     }
     
     // Get hCaptcha response
-    const response = hcaptcha.getResponse(captchaContainer);
+    const captchaResponse = hcaptcha.getResponse(captchaContainer);
     
-    if (!response) {
+    if (!captchaResponse) {
         alert('Please complete the CAPTCHA verification.');
         return;
     }
     
-    // Verify CAPTCHA with backend
+    // Get form data
+    const formData = new FormData(form);
+    formData.append('h-captcha-response', captchaResponse);
+    
+    // Convert FormData to JSON
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+    
+    // Determine API endpoint based on form class
+    const isContactForm = form.classList.contains('contact-form');
+    const endpoint = isContactForm ? '/api/contact' : '/api/quote';
+    
+    // Show loading state
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+    
     try {
-        const verifyResponse = await fetch('/api/verify-form-captcha', {
+        const response = await fetch(endpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                token: response
-            })
+            body: JSON.stringify(data)
         });
         
-        const result = await verifyResponse.json();
+        const result = await response.json();
         
         if (result.success) {
-            // CAPTCHA verified, submit the form
-            form.submit();
+            // Show success message
+            alert(result.message || 'Thank you! Your message has been sent successfully. We will get back to you shortly.');
+            
+            // Reset form
+            form.reset();
+            hcaptcha.reset(captchaContainer);
         } else {
-            alert('CAPTCHA verification failed. Please try again.');
+            alert(result.message || 'Failed to send message. Please try again.');
             hcaptcha.reset(captchaContainer);
         }
     } catch (error) {
-        console.error('Error verifying form CAPTCHA:', error);
-        alert('An error occurred. Please try again.');
+        console.error('Error submitting form:', error);
+        alert('An error occurred while sending your message. Please try again or contact us directly at info@qualifiedmachine.com.');
+    } finally {
+        // Restore button state
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
     }
 }
 
