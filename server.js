@@ -51,12 +51,17 @@ if (EMAIL_PASS) {
 // Verify hCaptcha token
 async function verifyHCaptcha(token) {
     try {
-        const response = await axios.post('https://hcaptcha.com/siteverify', null, {
-            params: {
-                secret: HCAPTCHA_SECRET,
-                response: token
+        const params = new URLSearchParams();
+        params.append('secret', HCAPTCHA_SECRET);
+        params.append('response', token);
+        
+        const response = await axios.post('https://hcaptcha.com/siteverify', params, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
         });
+        
+        console.log('hCaptcha verification response:', response.data);
         return response.data.success;
     } catch (error) {
         console.error('hCaptcha verification error:', error);
