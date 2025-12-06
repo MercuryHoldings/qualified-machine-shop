@@ -313,43 +313,71 @@ function replaceAllContactButtons(type, contactInfo) {
     if (type === 'email') {
         linkHTML = `<a href="mailto:${contactInfo}" class="contact-info-revealed email-revealed">${contactInfo}</a>`;
         
-        // Find all email reveal buttons and their containers
-        const buttons = document.querySelectorAll('.reveal-email, button[onclick*="email"], a[onclick*="email"]');
+        // Find all elements that need to be replaced
+        // Priority: replace parent <a> tags with class email-address first, then spans, then standalone buttons
+        const parentAnchors = document.querySelectorAll('a.email-address');
         const spans = document.querySelectorAll('span.email-address');
+        const standaloneButtons = document.querySelectorAll('button.reveal-email');
         
-        buttons.forEach(button => {
+        // Replace parent <a> tags that contain the reveal button
+        parentAnchors.forEach(anchor => {
             const temp = document.createElement('div');
             temp.innerHTML = linkHTML;
             const newElement = temp.firstChild;
-            button.parentNode.replaceChild(newElement, button);
+            anchor.parentNode.replaceChild(newElement, anchor);
         });
         
+        // Replace span containers
         spans.forEach(span => {
             const temp = document.createElement('div');
             temp.innerHTML = linkHTML;
             const newElement = temp.firstChild;
             span.parentNode.replaceChild(newElement, span);
+        });
+        
+        // Replace any remaining standalone buttons (that weren't inside replaced parents)
+        standaloneButtons.forEach(button => {
+            // Check if button still exists in DOM (wasn't already replaced as part of parent)
+            if (document.body.contains(button)) {
+                const temp = document.createElement('div');
+                temp.innerHTML = linkHTML;
+                const newElement = temp.firstChild;
+                button.parentNode.replaceChild(newElement, button);
+            }
         });
     } else {
         const phoneClean = contactInfo.replace(/[^0-9]/g, '');
         linkHTML = `<a href="tel:${phoneClean}" class="contact-info-revealed phone-revealed">${contactInfo}</a>`;
         
-        // Find all phone reveal buttons and their containers
-        const buttons = document.querySelectorAll('.reveal-phone, button[onclick*="phone"], a[onclick*="phone"]');
+        // Find all elements that need to be replaced
+        const parentAnchors = document.querySelectorAll('a.phone-number');
         const spans = document.querySelectorAll('span.phone-number');
+        const standaloneButtons = document.querySelectorAll('button.reveal-phone');
         
-        buttons.forEach(button => {
+        // Replace parent <a> tags that contain the reveal button
+        parentAnchors.forEach(anchor => {
             const temp = document.createElement('div');
             temp.innerHTML = linkHTML;
             const newElement = temp.firstChild;
-            button.parentNode.replaceChild(newElement, button);
+            anchor.parentNode.replaceChild(newElement, anchor);
         });
         
+        // Replace span containers
         spans.forEach(span => {
             const temp = document.createElement('div');
             temp.innerHTML = linkHTML;
             const newElement = temp.firstChild;
             span.parentNode.replaceChild(newElement, span);
+        });
+        
+        // Replace any remaining standalone buttons
+        standaloneButtons.forEach(button => {
+            if (document.body.contains(button)) {
+                const temp = document.createElement('div');
+                temp.innerHTML = linkHTML;
+                const newElement = temp.firstChild;
+                button.parentNode.replaceChild(newElement, button);
+            }
         });
     }
 }
