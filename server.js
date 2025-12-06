@@ -35,7 +35,7 @@ const CONTACT_INFO = {
 // Create email transporter
 let transporter;
 if (EMAIL_PASS) {
-    transporter = nodemailer.createTransporter({
+    transporter = nodemailer.createTransport({
         host: 'mail.privateemail.com',
         port: 465,
         secure: true,
