@@ -308,27 +308,50 @@ async function handleCaptchaSuccess(token, type, modal) {
 
 // Replace all contact buttons of a specific type with the actual contact info
 function replaceAllContactButtons(type, contactInfo) {
-    let buttons;
     let linkHTML;
     
     if (type === 'email') {
-        buttons = document.querySelectorAll('.reveal-email, button[onclick*="email"], a[onclick*="email"], span.email-address');
         linkHTML = `<a href="mailto:${contactInfo}" class="contact-info-revealed email-revealed">${contactInfo}</a>`;
+        
+        // Find all email reveal buttons and their containers
+        const buttons = document.querySelectorAll('.reveal-email, button[onclick*="email"], a[onclick*="email"]');
+        const spans = document.querySelectorAll('span.email-address');
+        
+        buttons.forEach(button => {
+            const temp = document.createElement('div');
+            temp.innerHTML = linkHTML;
+            const newElement = temp.firstChild;
+            button.parentNode.replaceChild(newElement, button);
+        });
+        
+        spans.forEach(span => {
+            const temp = document.createElement('div');
+            temp.innerHTML = linkHTML;
+            const newElement = temp.firstChild;
+            span.parentNode.replaceChild(newElement, span);
+        });
     } else {
-        buttons = document.querySelectorAll('.reveal-phone, button[onclick*="phone"], a[onclick*="phone"], span.phone-number');
         const phoneClean = contactInfo.replace(/[^0-9]/g, '');
         linkHTML = `<a href="tel:${phoneClean}" class="contact-info-revealed phone-revealed">${contactInfo}</a>`;
-    }
-    
-    buttons.forEach(button => {
-        // Create a temporary container to parse the HTML
-        const temp = document.createElement('div');
-        temp.innerHTML = linkHTML;
-        const newElement = temp.firstChild;
         
-        // Replace the button with the new link
-        button.parentNode.replaceChild(newElement, button);
-    });
+        // Find all phone reveal buttons and their containers
+        const buttons = document.querySelectorAll('.reveal-phone, button[onclick*="phone"], a[onclick*="phone"]');
+        const spans = document.querySelectorAll('span.phone-number');
+        
+        buttons.forEach(button => {
+            const temp = document.createElement('div');
+            temp.innerHTML = linkHTML;
+            const newElement = temp.firstChild;
+            button.parentNode.replaceChild(newElement, button);
+        });
+        
+        spans.forEach(span => {
+            const temp = document.createElement('div');
+            temp.innerHTML = linkHTML;
+            const newElement = temp.firstChild;
+            span.parentNode.replaceChild(newElement, span);
+        });
+    }
 }
 
 // Show error message in modal
